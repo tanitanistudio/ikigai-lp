@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サービス紹介LP</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Noto+Sans+JP:wght@100..900&family=Inter:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Battambang:wght@100;300;400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="hero">
+        <div class="container">
+            <div class="logo"><img src="/img/logo.png" alt="logo"></div>
+        </div>
+    </header>
+
+    <section id="contact" class="contact confirm">
+        <div class="container">
+            <div class="ttl">お問い合わせ・ご相談<br>（確認画面）</div>
+            <div class="inner">
+                <div class="txt">
+                    <div class="txt_1">以下の内容でよろしければ「送信する」ボタンをクリックしてください。</div>
+                </div>
+                <div class="confirm-table">
+                    <div class="form-group"><label>【貴社名】</label><div class="c-txt" id="c-company"></div></div>
+                    <div class="form-group"><label>【部署名】</label><div class="c-txt" id="c-department"></div></div>
+                    <div class="form-group"><label>【氏名】</label><div class="c-txt" id="c-name"></div></div>
+                    <div class="form-group"><label>【フリガナ】</label><div class="c-txt" id="c-kana"></div></div>
+                    <div class="form-group"><label>【電話番号】</label><div class="c-txt" id="c-tel"></div></div>
+                    <div class="form-group"><label>【メールアドレス】</label><div class="c-txt" id="c-email"></div></div>
+                    <div class="form-group"><label>【お問い合わせ種類】</label><div class="c-txt" id="c-os"></div></div>
+                    <div class="form-group"><label>【お問い合わせ内容】</label><div class="c-txt" id="c-message"></div></div>
+                    <div class="form-group"><label>【プライバシーポリシー】</label><div class="c-txt" id="c-privacy"></div></div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" id="contactBackBtn" class="back-btn">戻る</button>
+                    <button type="button" id="contactSubmitBtn" class="submit-btn">送信する</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const GAS_URL = "https://script.google.com/macros/s/AKfycbyG_PMTezzxDsAAbJTWtvfkw399SkQpyGg_1feNgmZ9mOjBfbbSMwCFwY5xkxrcyw/exec";
+
+            // sessionStorageからデータ取得
+            const raw = sessionStorage.getItem("contactData");
+            if (!raw) {
+                alert("入力データが見つかりません。フォームから入力しなおしてください。");
+                location.href = "index.html#contact";
+                return;
+            }
+            const data = JSON.parse(raw);
+
+            // 確認画面に値を表示
+            document.getElementById("c-company").textContent    = data.company    || "\u00A0";
+            document.getElementById("c-department").textContent = data.department || "\u00A0";
+            document.getElementById("c-name").textContent       = data.name       || "\u00A0";
+            document.getElementById("c-kana").textContent       = data.kana       || "\u00A0";
+            document.getElementById("c-tel").textContent        = data.tel        || "\u00A0";
+            document.getElementById("c-email").textContent      = data.email      || "\u00A0";
+            document.getElementById("c-os").textContent         = data.os         || "\u00A0";
+            document.getElementById("c-message").textContent    = data.message    || "\u00A0";
+            document.getElementById("c-privacy").textContent    = data.privacy === "同意" ? "同意する" : "\u00A0";
+
+            // 戻るボタン
+            document.getElementById("contactBackBtn").addEventListener("click", () => {
+                history.back();
+            });
+
+            // 送信ボタン
+            document.getElementById("contactSubmitBtn").addEventListener("click", async () => {
+                const btn = document.getElementById("contactSubmitBtn");
+                btn.disabled = true;
+                btn.textContent = "送信中...";
+
+                try {
+                    const response = await fetch(GAS_URL, {
+                        method: "POST",
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.status === "success") {
+                        sessionStorage.removeItem("contactData");
+                        location.href = "thanks.html";
+                    } else {
+                        alert("送信に失敗しました。しばらくしてからもう一度お試しください。");
+                        btn.disabled = false;
+                        btn.textContent = "送信する";
+                    }
+                } catch (err) {
+                    alert("通信エラーが発生しました。");
+                    console.error(err);
+                    btn.disabled = false;
+                    btn.textContent = "送信する";
+                }
+            });
+        });
+    </script>
+
+    <footer>
+        <div class="container">
+            <div class="inner">
+                <div class="image"><img src="/img/footer_logo.png" alt=""></div>
+                <div class="address">
+                    〒160-0023<br>
+                    東京都新宿区西新宿7-20-11 西新宿AIビル2F
+                </div>
+                <div class="link"><a href="">プライバシーポリシー</a></div>
+            </div>
+            <div class="copyright">© 2026INFODIRECT Co.,Ltd.</div>
+        </div>
+    </footer>
+</body>
+
+</html>
