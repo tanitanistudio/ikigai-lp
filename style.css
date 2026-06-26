@@ -113,6 +113,17 @@ a {
     height: auto;
 }
 
+.hero .container .note-block {
+    margin-top: 10px;
+    padding: 6px 8px;
+}
+
+.hero .container .note-block .note {
+    text-align: left;
+    font-size: clamp(8px, 3vw, 16px);
+    color: #6B5747;
+}
+
 /* セクションごとの色分け */
 .fv .container {
     padding: 0;
@@ -170,6 +181,9 @@ a {
 .campaign-1 .container .inner {
     background: #fff;
     padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .campaign-1 .container .inner .image {
@@ -183,9 +197,44 @@ a {
     font-size: clamp(10px, 4vw, 20px);
 }
 
-.campaign-1 .container .inner .btn {
+.campaign-1 .container .inner .btn,
+.campaign-2 .container .inner .cta-button .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 90%;
+    min-height: 66px;
     margin: 0 auto;
+    padding: 0.55em 1.15em;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #a7d73a 0%, #9bcf2f 52%, #8fc126 100%);
+    box-shadow:
+        inset 0 4px 8px rgba(255, 255, 255, 0.45),
+        inset 0 -8px 14px rgba(98, 147, 22, 0.35),
+        inset 0 0 10px rgba(0, 0, 0, 0.6),
+        0 4px 10px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.campaign-1 .container .inner .btn::after,
+.campaign-2 .container .inner .cta-button .btn::after {
+    content: ">>>";
+    margin-left: 0.35em;
+    letter-spacing: 0.12em;
+}
+
+@media (min-width: 480px) {
+    .campaign-1 .container .inner .btn,
+    .campaign-2 .container .inner .cta-button .btn {
+        min-height: 98px;
+        border-radius: 16px;
+        font-size: 30px;
+    }
 }
 
 .campaign-2 .container {
@@ -210,7 +259,6 @@ a {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    padding: 0 20px;
 }
 
 .campaign-2 .container .inner .cta-button .note {
