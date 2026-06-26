@@ -120,7 +120,7 @@ a {
 
 .hero .container .note-block .note {
     text-align: left;
-    font-size: clamp(8px, 3vw, 16px);
+    font-size: clamp(8px, 3vw, 12px);
     color: #6B5747;
 }
 
