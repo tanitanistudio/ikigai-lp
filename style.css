@@ -113,17 +113,6 @@ a {
     height: auto;
 }
 
-.hero .container .note-block {
-    margin-top: 10px;
-    padding: 6px 8px;
-}
-
-.hero .container .note-block .note {
-    text-align: left;
-    font-size: clamp(8px, 3vw, 12px);
-    color: #6B5747;
-}
-
 /* セクションごとの色分け */
 .fv .container {
     padding: 0;
