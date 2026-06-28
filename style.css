@@ -61,9 +61,11 @@ a {
 }
 
 .hero .container .campaign {
-    font-size: clamp(10px, 4vw, 20px);
     margin: 10px auto 5px;
     text-align: center;
+    font-size: clamp(11px, 2.6vw, 14px);
+    line-height: 1.4;
+    padding: 6px 0;
 }
 
 .hero .container .campaign span {
@@ -1498,12 +1500,6 @@ footer .container .copyright {
     font-size: 1.1em;
 }
 
-/* hero campaign banner (新キャンペーン表記の文字数調整) */
-.hero .container .campaign {
-    font-size: clamp(11px, 2.6vw, 14px);
-    line-height: 1.4;
-    padding: 6px 8px;
-}
 
 /* ========================================
    2026-05-19 配色刷新 — Blue accent 追加
