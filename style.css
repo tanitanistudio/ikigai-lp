@@ -1181,6 +1181,16 @@ a {
     text-align: center;
 }
 
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .back-btn {
     margin: 0 auto;
     background-color: #4f4f4f;

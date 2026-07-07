@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Noto+Sans+JP:wght@100..900&family=Inter:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Battambang:wght@100;300;400;700;900&display=swap"
         rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfWIVsqAAAAAKByx7i5wj2gpUj3E-kojfly7E-U" async defer></script>
 </head>
 
 <body>
@@ -47,64 +48,112 @@
     </section>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitBtn = document.getElementById('documentSubmitBtn');
+            const backBtn = document.getElementById('documentBackBtn');
+            const formId = '11747';
+            const RECAPTCHA_SITE_KEY = '6LfWIVsqAAAAAKByx7i5wj2gpUj3E-kojfly7E-U';
+            const thanksUrl = 'document-thanks.html';
+            const apiUrl = `https://infodirect.co.jp/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
 
-            const GAS_URL = "https://script.google.com/macros/s/AKfycbyG_PMTezzxDsAAbJTWtvfkw399SkQpyGg_1feNgmZ9mOjBfbbSMwCFwY5xkxrcyw/exec";
-
-            // sessionStorageからデータ取得
-            const raw = sessionStorage.getItem("documentData");
-            if (!raw) {
-                alert("入力データが見つかりません。フォームから入力しなおしてください。");
-                location.href = "index.html#document";
-                return;
+            function resetSubmitBtn() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送信する';
             }
-            const data = JSON.parse(raw);
 
-            // 確認画面に値を表示
-            document.getElementById("d-company").textContent    = data.company    || "\u00A0";
-            document.getElementById("d-department").textContent = data.department || "\u00A0";
-            document.getElementById("d-name").textContent       = data.name       || "\u00A0";
-            document.getElementById("d-kana").textContent       = data.kana       || "\u00A0";
-            document.getElementById("d-tel").textContent        = data.tel        || "\u00A0";
-            document.getElementById("d-email").textContent      = data.email      || "\u00A0";
-            document.getElementById("d-pref").textContent       = data.pref       || "\u00A0";
-            document.getElementById("d-message").textContent    = data.message    || "\u00A0";
-            document.getElementById("d-privacy").textContent    = data.privacy === "同意" ? "同意する" : "\u00A0";
-
-            // 戻るボタン
-            document.getElementById("documentBackBtn").addEventListener("click", () => {
-                history.back();
-            });
-
-            // 送信ボタン
-            document.getElementById("documentSubmitBtn").addEventListener("click", async () => {
-                const btn = document.getElementById("documentSubmitBtn");
-                btn.disabled = true;
-                btn.textContent = "送信中...";
-
-                try {
-                    const response = await fetch(GAS_URL, {
-                        method: "POST",
-                        body: JSON.stringify(data)
-                    });
-
-                    const result = await response.json();
-
-                    if (result.status === "success") {
-                        sessionStorage.removeItem("documentData");
-                        location.href = "thanks.html";
-                    } else {
-                        alert("送信に失敗しました。しばらくしてからもう一度お試しください。");
-                        btn.disabled = false;
-                        btn.textContent = "送信する";
+            function getRecaptchaToken() {
+                return new Promise(function(resolve, reject) {
+                    if (typeof grecaptcha === 'undefined') {
+                        reject(new Error('reCAPTCHA not loaded'));
+                        return;
                     }
-                } catch (err) {
-                    alert("通信エラーが発生しました。");
-                    console.error(err);
-                    btn.disabled = false;
-                    btn.textContent = "送信する";
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'document' })
+                            .then(resolve)
+                            .catch(reject);
+                    });
+                });
+            }
+
+            function buildFormData() {
+                const formData = new FormData();
+                formData.append('_wpcf7', formId);
+                formData.append('_wpcf7_unit_tag', 'wpcf7-f' + formId + '-o1');
+                formData.append('_wpcf7_container_post', '0');
+                formData.append('_wpcf7_locale', 'ja');
+                formData.append('company', sessionStorage.getItem('company') || '');
+                formData.append('department', sessionStorage.getItem('department') || '');
+                formData.append('your-name', sessionStorage.getItem('your-name') || '');
+                formData.append('kana', sessionStorage.getItem('kana') || '');
+                formData.append('tel', sessionStorage.getItem('tel') || '');
+                formData.append('email', sessionStorage.getItem('email') || '');
+                formData.append('pref', sessionStorage.getItem('pref') || '');
+                formData.append('message', sessionStorage.getItem('message') || '');
+                formData.append('privacy', sessionStorage.getItem('privacy') || '');
+                return formData;
+            }
+
+            function handleCf7Response(data) {
+                if (data.status === 'mail_sent') {
+                    sessionStorage.clear();
+                    window.location.href = thanksUrl;
+                } else if (data.status === 'spam') {
+                    alert('送信がスパム判定されました。WordPress側のCF7スパム設定の確認が必要です。');
+                    console.error('CF7 spam response:', data);
+                    resetSubmitBtn();
+                } else if (data.invalid_fields && data.invalid_fields.length > 0) {
+                    const messages = data.invalid_fields.map(function(field) {
+                        return field.message;
+                    }).join('\n');
+                    alert('入力内容に問題があります。\n' + messages);
+                    resetSubmitBtn();
+                } else {
+                    alert('送信に失敗しました。（' + data.status + '）: ' + data.message);
+                    resetSubmitBtn();
                 }
-            });
+            }
+
+            document.getElementById('d-company').textContent = sessionStorage.getItem('company') || '（未入力）';
+            document.getElementById('d-department').textContent = sessionStorage.getItem('department') || '（未入力）';
+            document.getElementById('d-name').textContent = sessionStorage.getItem('your-name') || '（未入力）';
+            document.getElementById('d-kana').textContent = sessionStorage.getItem('kana') || '（未入力）';
+            document.getElementById('d-tel').textContent = sessionStorage.getItem('tel') || '（未入力）';
+            document.getElementById('d-email').textContent = sessionStorage.getItem('email') || '（未入力）';
+            document.getElementById('d-pref').textContent = sessionStorage.getItem('pref') || '（未入力）';
+            document.getElementById('d-message').textContent = sessionStorage.getItem('message') || '（未入力）';
+            document.getElementById('d-privacy').textContent = sessionStorage.getItem('privacy') === '同意' ? '同意する' : '（未同意）';
+
+            if (backBtn) {
+                backBtn.addEventListener('click', function() {
+                    history.back();
+                });
+            }
+
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function() {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = '送信中...';
+
+                    getRecaptchaToken()
+                        .then(function(token) {
+                            const formData = buildFormData();
+                            formData.append('_wpcf7_recaptcha_response', token);
+
+                            return fetch(apiUrl, {
+                                method: 'POST',
+                                headers: { 'Accept': 'application/json' },
+                                body: formData
+                            });
+                        })
+                        .then(function(response) { return response.json(); })
+                        .then(handleCf7Response)
+                        .catch(function(error) {
+                            console.error(error);
+                            alert('通信エラーが発生しました。reCAPTCHAの読み込みを確認してください。');
+                            resetSubmitBtn();
+                        });
+                });
+            }
         });
     </script>
 
