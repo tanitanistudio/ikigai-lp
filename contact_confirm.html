@@ -1,182 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-NCH82JD6');
+    </script>
+    <!-- End Google Tag Manager -->
     <title>サービス紹介LP</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Noto+Sans+JP:wght@100..900&family=Inter:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Battambang:wght@100;300;400;700;900&display=swap"
-        rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfWIVsqAAAAAKByx7i5wj2gpUj3E-kojfly7E-U" async defer></script>
-</head>
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Noto+Sans+JP:wght@100..900&family=Inter:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Battambang:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet" />
+    <script
+      src="https://www.google.com/recaptcha/api.js?render=6LfWIVsqAAAAAKByx7i5wj2gpUj3E-kojfly7E-U"
+      async
+      defer></script>
+  </head>
 
-<body>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NCH82JD6"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <header class="hero">
-        <div class="container">
-            <div class="logo"><img src="img/logo.png" alt="logo"></div>
-        </div>
+      <div class="container">
+        <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+      </div>
     </header>
 
     <section id="contact" class="contact confirm">
-        <div class="container">
-            <div class="ttl">お問い合わせ・ご相談<br>（確認画面）</div>
-            <div class="inner">
-                <div class="txt">
-                    <div class="txt_1">以下の内容でよろしければ「送信する」ボタンをクリックしてください。</div>
-                </div>
-                <div class="confirm-table">
-                    <div class="form-group"><label>【貴社名】</label><div class="c-txt" id="c-company"></div></div>
-                    <div class="form-group"><label>【部署名】</label><div class="c-txt" id="c-department"></div></div>
-                    <div class="form-group"><label>【氏名】</label><div class="c-txt" id="c-name"></div></div>
-                    <div class="form-group"><label>【フリガナ】</label><div class="c-txt" id="c-kana"></div></div>
-                    <div class="form-group"><label>【電話番号】</label><div class="c-txt" id="c-tel"></div></div>
-                    <div class="form-group"><label>【メールアドレス】</label><div class="c-txt" id="c-email"></div></div>
-                    <div class="form-group"><label>【お問い合わせ種類】</label><div class="c-txt" id="c-os"></div></div>
-                    <div class="form-group"><label>【お問い合わせ内容】</label><div class="c-txt" id="c-message"></div></div>
-                    <div class="form-group"><label>【プライバシーポリシー】</label><div class="c-txt" id="c-privacy"></div></div>
-                </div>
-                <div class="btn-group">
-                    <button type="button" id="contactBackBtn" class="back-btn">戻る</button>
-                    <button type="button" id="contactSubmitBtn" class="submit-btn">送信する</button>
-                </div>
+      <div class="container">
+        <div class="ttl">お問い合わせ・ご相談<br />（確認画面）</div>
+        <div class="inner">
+          <div class="txt">
+            <div class="txt_1">
+              以下の内容でよろしければ「送信する」ボタンをクリックしてください。
             </div>
+          </div>
+          <div class="confirm-table">
+            <div class="form-group">
+              <label>【貴社名】</label>
+              <div class="c-txt" id="c-company"></div>
+            </div>
+            <div class="form-group">
+              <label>【部署名】</label>
+              <div class="c-txt" id="c-department"></div>
+            </div>
+            <div class="form-group">
+              <label>【氏名】</label>
+              <div class="c-txt" id="c-name"></div>
+            </div>
+            <div class="form-group">
+              <label>【フリガナ】</label>
+              <div class="c-txt" id="c-kana"></div>
+            </div>
+            <div class="form-group">
+              <label>【電話番号】</label>
+              <div class="c-txt" id="c-tel"></div>
+            </div>
+            <div class="form-group">
+              <label>【メールアドレス】</label>
+              <div class="c-txt" id="c-email"></div>
+            </div>
+            <div class="form-group">
+              <label>【お問い合わせ種類】</label>
+              <div class="c-txt" id="c-os"></div>
+            </div>
+            <div class="form-group">
+              <label>【お問い合わせ内容】</label>
+              <div class="c-txt" id="c-message"></div>
+            </div>
+            <div class="form-group">
+              <label>【プライバシーポリシー】</label>
+              <div class="c-txt" id="c-privacy"></div>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" id="contactBackBtn" class="back-btn">
+              戻る
+            </button>
+            <button type="button" id="contactSubmitBtn" class="submit-btn">
+              送信する
+            </button>
+          </div>
         </div>
+      </div>
     </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const submitBtn = document.getElementById('contactSubmitBtn');
-            const backBtn = document.getElementById('contactBackBtn');
-            const formId = '11749';
-            const RECAPTCHA_SITE_KEY = '6LfWIVsqAAAAAKByx7i5wj2gpUj3E-kojfly7E-U';
-            const thanksUrl = 'contact-thanks.html';
-            const apiUrl = `https://infodirect.co.jp/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
+      document.addEventListener('DOMContentLoaded', function () {
+        const submitBtn = document.getElementById('contactSubmitBtn');
+        const backBtn = document.getElementById('contactBackBtn');
+        const formId = '11749';
+        const RECAPTCHA_SITE_KEY = '6LfWIVsqAAAAAKByx7i5wj2gpUj3E-kojfly7E-U';
+        const thanksUrl = 'contact-thanks.html';
+        const apiUrl = `https://infodirect.co.jp/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
 
-            function resetSubmitBtn() {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '送信する';
+        function resetSubmitBtn() {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '送信する';
+        }
+
+        function getRecaptchaToken() {
+          return new Promise(function (resolve, reject) {
+            if (typeof grecaptcha === 'undefined') {
+              reject(new Error('reCAPTCHA not loaded'));
+              return;
             }
+            grecaptcha.ready(function () {
+              grecaptcha
+                .execute(RECAPTCHA_SITE_KEY, { action: 'contact' })
+                .then(resolve)
+                .catch(reject);
+            });
+          });
+        }
 
-            function getRecaptchaToken() {
-                return new Promise(function(resolve, reject) {
-                    if (typeof grecaptcha === 'undefined') {
-                        reject(new Error('reCAPTCHA not loaded'));
-                        return;
-                    }
-                    grecaptcha.ready(function() {
-                        grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' })
-                            .then(resolve)
-                            .catch(reject);
-                    });
+        function buildFormData() {
+          const formData = new FormData();
+          formData.append('_wpcf7', formId);
+          formData.append('_wpcf7_unit_tag', 'wpcf7-f' + formId + '-o1');
+          formData.append('_wpcf7_container_post', '0');
+          formData.append('_wpcf7_locale', 'ja');
+          formData.append(
+            'your-company',
+            sessionStorage.getItem('your-company') || '',
+          );
+          formData.append(
+            'your-busyo',
+            sessionStorage.getItem('your-busyo') || '',
+          );
+          formData.append(
+            'your-name',
+            sessionStorage.getItem('your-name') || '',
+          );
+          formData.append(
+            'your-furigana',
+            sessionStorage.getItem('your-furigana') || '',
+          );
+          formData.append('your-tel', sessionStorage.getItem('your-tel') || '');
+          formData.append(
+            'your-email',
+            sessionStorage.getItem('your-email') || '',
+          );
+          formData.append(
+            'your-message',
+            sessionStorage.getItem('your-message') || '',
+          );
+          formData.append('privacy', sessionStorage.getItem('privacy') || '');
+
+          const choiceService = sessionStorage.getItem('choice-service') || '';
+          if (choiceService) {
+            choiceService.split(', ').forEach(function (value) {
+              formData.append('choice-service', value);
+            });
+          }
+
+          return formData;
+        }
+
+        function handleCf7Response(data) {
+          if (data.status === 'mail_sent') {
+            sessionStorage.clear();
+            window.location.href = thanksUrl;
+          } else if (data.status === 'spam') {
+            alert(
+              '送信がスパム判定されました。WordPress側のCF7スパム設定の確認が必要です。',
+            );
+            console.error('CF7 spam response:', data);
+            resetSubmitBtn();
+          } else if (data.invalid_fields && data.invalid_fields.length > 0) {
+            const messages = data.invalid_fields
+              .map(function (field) {
+                return field.message;
+              })
+              .join('\n');
+            alert('入力内容に問題があります。\n' + messages);
+            resetSubmitBtn();
+          } else {
+            alert(
+              '送信に失敗しました。（' + data.status + '）: ' + data.message,
+            );
+            resetSubmitBtn();
+          }
+        }
+
+        document.getElementById('c-company').textContent =
+          sessionStorage.getItem('your-company') || '（未入力）';
+        document.getElementById('c-department').textContent =
+          sessionStorage.getItem('your-busyo') || '（未入力）';
+        document.getElementById('c-name').textContent =
+          sessionStorage.getItem('your-name') || '（未入力）';
+        document.getElementById('c-kana').textContent =
+          sessionStorage.getItem('your-furigana') || '（未入力）';
+        document.getElementById('c-tel').textContent =
+          sessionStorage.getItem('your-tel') || '（未入力）';
+        document.getElementById('c-email').textContent =
+          sessionStorage.getItem('your-email') || '（未入力）';
+        document.getElementById('c-os').textContent =
+          sessionStorage.getItem('choice-service') || '（未選択）';
+        document.getElementById('c-message').textContent =
+          sessionStorage.getItem('your-message') || '（未入力）';
+        document.getElementById('c-privacy').textContent =
+          sessionStorage.getItem('privacy') === '同意'
+            ? '同意する'
+            : '（未同意）';
+
+        if (backBtn) {
+          backBtn.addEventListener('click', function () {
+            history.back();
+          });
+        }
+
+        if (submitBtn) {
+          submitBtn.addEventListener('click', function () {
+            submitBtn.disabled = true;
+            submitBtn.textContent = '送信中...';
+
+            getRecaptchaToken()
+              .then(function (token) {
+                const formData = buildFormData();
+                formData.append('_wpcf7_recaptcha_response', token);
+
+                return fetch(apiUrl, {
+                  method: 'POST',
+                  headers: { Accept: 'application/json' },
+                  body: formData,
                 });
-            }
-
-            function buildFormData() {
-                const formData = new FormData();
-                formData.append('_wpcf7', formId);
-                formData.append('_wpcf7_unit_tag', 'wpcf7-f' + formId + '-o1');
-                formData.append('_wpcf7_container_post', '0');
-                formData.append('_wpcf7_locale', 'ja');
-                formData.append('your-company', sessionStorage.getItem('your-company') || '');
-                formData.append('your-busyo', sessionStorage.getItem('your-busyo') || '');
-                formData.append('your-name', sessionStorage.getItem('your-name') || '');
-                formData.append('your-furigana', sessionStorage.getItem('your-furigana') || '');
-                formData.append('your-tel', sessionStorage.getItem('your-tel') || '');
-                formData.append('your-email', sessionStorage.getItem('your-email') || '');
-                formData.append('your-message', sessionStorage.getItem('your-message') || '');
-                formData.append('privacy', sessionStorage.getItem('privacy') || '');
-
-                const choiceService = sessionStorage.getItem('choice-service') || '';
-                if (choiceService) {
-                    choiceService.split(', ').forEach(function(value) {
-                        formData.append('choice-service', value);
-                    });
-                }
-
-                return formData;
-            }
-
-            function handleCf7Response(data) {
-                if (data.status === 'mail_sent') {
-                    sessionStorage.clear();
-                    window.location.href = thanksUrl;
-                } else if (data.status === 'spam') {
-                    alert('送信がスパム判定されました。WordPress側のCF7スパム設定の確認が必要です。');
-                    console.error('CF7 spam response:', data);
-                    resetSubmitBtn();
-                } else if (data.invalid_fields && data.invalid_fields.length > 0) {
-                    const messages = data.invalid_fields.map(function(field) {
-                        return field.message;
-                    }).join('\n');
-                    alert('入力内容に問題があります。\n' + messages);
-                    resetSubmitBtn();
-                } else {
-                    alert('送信に失敗しました。（' + data.status + '）: ' + data.message);
-                    resetSubmitBtn();
-                }
-            }
-
-            document.getElementById('c-company').textContent = sessionStorage.getItem('your-company') || '（未入力）';
-            document.getElementById('c-department').textContent = sessionStorage.getItem('your-busyo') || '（未入力）';
-            document.getElementById('c-name').textContent = sessionStorage.getItem('your-name') || '（未入力）';
-            document.getElementById('c-kana').textContent = sessionStorage.getItem('your-furigana') || '（未入力）';
-            document.getElementById('c-tel').textContent = sessionStorage.getItem('your-tel') || '（未入力）';
-            document.getElementById('c-email').textContent = sessionStorage.getItem('your-email') || '（未入力）';
-            document.getElementById('c-os').textContent = sessionStorage.getItem('choice-service') || '（未選択）';
-            document.getElementById('c-message').textContent = sessionStorage.getItem('your-message') || '（未入力）';
-            document.getElementById('c-privacy').textContent = sessionStorage.getItem('privacy') === '同意' ? '同意する' : '（未同意）';
-
-            if (backBtn) {
-                backBtn.addEventListener('click', function() {
-                    history.back();
-                });
-            }
-
-            if (submitBtn) {
-                submitBtn.addEventListener('click', function() {
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = '送信中...';
-
-                    getRecaptchaToken()
-                        .then(function(token) {
-                            const formData = buildFormData();
-                            formData.append('_wpcf7_recaptcha_response', token);
-
-                            return fetch(apiUrl, {
-                                method: 'POST',
-                                headers: { 'Accept': 'application/json' },
-                                body: formData
-                            });
-                        })
-                        .then(function(response) { return response.json(); })
-                        .then(handleCf7Response)
-                        .catch(function(error) {
-                            console.error(error);
-                            alert('通信エラーが発生しました。reCAPTCHAの読み込みを確認してください。');
-                            resetSubmitBtn();
-                        });
-                });
-            }
-        });
+              })
+              .then(function (response) {
+                return response.json();
+              })
+              .then(handleCf7Response)
+              .catch(function (error) {
+                console.error(error);
+                alert(
+                  '通信エラーが発生しました。reCAPTCHAの読み込みを確認してください。',
+                );
+                resetSubmitBtn();
+              });
+          });
+        }
+      });
     </script>
 
     <footer>
-        <div class="container">
-            <div class="inner">
-                <div class="image"><img src="/img/footer_logo.png" alt=""></div>
-                <div class="address">
-                    〒160-0023<br>
-                    東京都新宿区西新宿7-20-11 西新宿AIビル2F
-                </div>
-                <div class="link"><a href="">プライバシーポリシー</a></div>
-            </div>
-            <div class="copyright">© 2026INFODIRECT Co.,Ltd.</div>
+      <div class="container">
+        <div class="inner">
+          <div class="image"><img src="/img/footer_logo.png" alt="" /></div>
+          <div class="address">
+            〒160-0023<br />
+            東京都新宿区西新宿7-20-11 西新宿AIビル2F
+          </div>
+          <div class="link"><a href="">プライバシーポリシー</a></div>
         </div>
+        <div class="copyright">© 2026INFODIRECT Co.,Ltd.</div>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>
