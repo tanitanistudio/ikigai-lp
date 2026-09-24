@@ -57,6 +57,10 @@
           </div>
           <div class="confirm-table">
             <div class="form-group">
+              <label>【氏名】</label>
+              <div class="c-txt" id="c-name"></div>
+            </div>
+            <div class="form-group">
               <label>【貴社名】</label>
               <div class="c-txt" id="c-company"></div>
             </div>
@@ -65,24 +69,12 @@
               <div class="c-txt" id="c-department"></div>
             </div>
             <div class="form-group">
-              <label>【氏名】</label>
-              <div class="c-txt" id="c-name"></div>
-            </div>
-            <div class="form-group">
-              <label>【フリガナ】</label>
-              <div class="c-txt" id="c-kana"></div>
-            </div>
-            <div class="form-group">
               <label>【電話番号】</label>
               <div class="c-txt" id="c-tel"></div>
             </div>
             <div class="form-group">
               <label>【メールアドレス】</label>
               <div class="c-txt" id="c-email"></div>
-            </div>
-            <div class="form-group">
-              <label>【お問い合わせ種類】</label>
-              <div class="c-txt" id="c-os"></div>
             </div>
             <div class="form-group">
               <label>【お問い合わせ内容】</label>
@@ -152,10 +144,6 @@
             'your-name',
             sessionStorage.getItem('your-name') || '',
           );
-          formData.append(
-            'your-furigana',
-            sessionStorage.getItem('your-furigana') || '',
-          );
           formData.append('your-tel', sessionStorage.getItem('your-tel') || '');
           formData.append(
             'your-email',
@@ -166,13 +154,6 @@
             sessionStorage.getItem('your-message') || '',
           );
           formData.append('privacy', sessionStorage.getItem('privacy') || '');
-
-          const choiceService = sessionStorage.getItem('choice-service') || '';
-          if (choiceService) {
-            choiceService.split(', ').forEach(function (value) {
-              formData.append('choice-service', value);
-            });
-          }
 
           return formData;
         }
@@ -209,14 +190,10 @@
           sessionStorage.getItem('your-busyo') || '（未入力）';
         document.getElementById('c-name').textContent =
           sessionStorage.getItem('your-name') || '（未入力）';
-        document.getElementById('c-kana').textContent =
-          sessionStorage.getItem('your-furigana') || '（未入力）';
         document.getElementById('c-tel').textContent =
           sessionStorage.getItem('your-tel') || '（未入力）';
         document.getElementById('c-email').textContent =
           sessionStorage.getItem('your-email') || '（未入力）';
-        document.getElementById('c-os').textContent =
-          sessionStorage.getItem('choice-service') || '（未選択）';
         document.getElementById('c-message').textContent =
           sessionStorage.getItem('your-message') || '（未入力）';
         document.getElementById('c-privacy').textContent =

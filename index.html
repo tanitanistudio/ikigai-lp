@@ -42,18 +42,6 @@
         <div class="logo">
           <img src="img/logo.webp" width="688" height="76" alt="株式会社インフォダイレクト" />
         </div>
-        <div class="campaign">
-          \ 初回導入のお客様限定 〈完全従量課金プラン〉月額基本料は発生しません
-          /<span>※2</span>
-        </div>
-        <div class="cta-button">
-          <a class="btn_document" href="#document"
-            ><img src="img/hero_icon_1.webp" width="24" height="30" alt="資料請求" />資料請求</a
-          >
-          <a class="btn_contact" href="#contact"
-            ><img src="img/hero_icon_2.webp" width="30" height="24" alt="無料相談" />無料相談</a
-          >
-        </div>
       </div>
     </header>
 
@@ -76,7 +64,7 @@
             <div class="campaign-sub">月額基本料は発生しません</div>
             <div class="campaign-detail">※詳細はお問い合わせください</div>
           </div>
-          <a href="#document" class="btn">今すぐ資料請求 or 無料相談</a>
+          <a href="#contact" class="btn">今すぐ資料請求 or 無料相談</a>
         </div>
       </div>
     </section>
@@ -133,7 +121,7 @@
             <div class="campaign-detail">※詳細はお問い合わせください</div>
           </div>
           <div class="cta-button">
-            <a href="#document" class="btn">今すぐ資料請求 or 無料相談</a>
+            <a href="#contact" class="btn">今すぐ資料請求 or 無料相談</a>
           </div>
         </div>
       </div>
@@ -194,7 +182,7 @@
             <div class="campaign-detail">※詳細はお問い合わせください</div>
           </div>
           <div class="cta-button">
-            <a href="#document" class="btn">今すぐ資料請求 or 無料相談</a>
+            <a href="#contact" class="btn">今すぐ資料請求 or 無料相談</a>
           </div>
         </div>
       </div>
@@ -382,7 +370,7 @@
             <div class="campaign-detail">※詳細はお問い合わせください</div>
           </div>
           <div class="cta-button">
-            <a href="#document" class="btn">今すぐ資料請求 or 無料相談</a>
+            <a href="#contact" class="btn">今すぐ資料請求 or 無料相談</a>
           </div>
         </div>
       </div>
@@ -438,7 +426,7 @@
             <div class="campaign-detail">※詳細はお問い合わせください</div>
           </div>
           <div class="cta-button">
-            <a href="#document" class="btn">今すぐ資料請求 or 無料相談</a>
+            <a href="#contact" class="btn">今すぐ資料請求 or 無料相談</a>
           </div>
         </div>
       </div>
@@ -458,6 +446,11 @@
           </div>
           <form id="contactForm">
             <div class="form-group">
+              <label>氏名<span class="required">必須</span></label>
+              <input type="text" name="your-name" placeholder="東京 一郎" required />
+              <div class="error-message"></div>
+            </div>
+            <div class="form-group">
               <label>貴社名<span class="required">必須</span></label>
               <input
                 type="text"
@@ -469,20 +462,6 @@
             <div class="form-group">
               <label>部署名</label>
               <input type="text" name="your-busyo" placeholder="通販事業部" />
-            </div>
-            <div class="form-group">
-              <label>氏名<span class="required">必須</span></label>
-              <input type="text" name="your-name" placeholder="東京 一郎" required />
-              <div class="error-message"></div>
-            </div>
-            <div class="form-group">
-              <label>フリガナ<span class="required">必須</span></label>
-              <input
-                type="text"
-                name="your-furigana"
-                placeholder="トウキョウ イチロウ"
-                required />
-              <div class="error-message"></div>
             </div>
             <div class="form-group">
               <label>電話番号<span class="required">必須</span></label>
@@ -501,40 +480,6 @@
                 placeholder="infodirect@dummy.com"
                 required />
               <div class="error-message"></div>
-            </div>
-            <div class="form-group form-group-select">
-              <label class="select"
-                >お問い合わせ・ご相談の種類<span class="required">必須</span
-                ><br /><span class="multiple">（複数選択可）</span></label
-              >
-              <label class="checkbox">
-                <input type="checkbox" name="choice-service[]" value="サービスについて" />
-                <span class="checkmark"></span>
-                サービスについて
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" name="choice-service[]" value="費用について" />
-                <span class="checkmark"></span>
-                費用について
-              </label>
-              <label class="checkbox">
-                <input
-                  type="checkbox"
-                  name="choice-service[]"
-                  value="面談希望（オンラインまたは対面）" />
-                <span class="checkmark"></span>
-                面談希望（オンラインまたは対面）
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" name="choice-service[]" value="業務提携" />
-                <span class="checkmark"></span>
-                業務提携
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" name="choice-service[]" value="その他" />
-                <span class="checkmark"></span>
-                その他
-              </label>
             </div>
             <div class="form-group">
               <label>お問い合わせ・ご相談内容</label>
@@ -573,105 +518,6 @@
       </div>
     </section>
 
-    <section id="document" class="document">
-      <div class="container">
-        <div class="ttl">資料請求</div>
-        <div class="inner">
-          <div class="txt">
-            <div class="txt_1">
-              インフォダイレクトのサービス概要や導入メリットを解説した資料をPDFでお送りします。
-            </div>
-            <div class="txt_2">
-              以下のフォームの必須事項をご入力の上、「送信する」ボタンをクリックしてください。
-            </div>
-          </div>
-          <form id="documentForm">
-            <div class="form-group">
-              <label>貴社名<span class="required">必須</span></label>
-              <input
-                type="text"
-                name="company"
-                placeholder="株式会社インフォダイレクト"
-                required />
-              <div class="error-message"></div>
-            </div>
-            <div class="form-group">
-              <label>部署名</label>
-              <input type="text" name="department" placeholder="通販事業部" />
-            </div>
-            <div class="form-group">
-              <label>氏名<span class="required">必須</span></label>
-              <input type="text" name="your-name" placeholder="東京 一郎" required />
-              <div class="error-message"></div>
-            </div>
-            <div class="form-group">
-              <label>フリガナ<span class="required">必須</span></label>
-              <input
-                type="text"
-                name="kana"
-                placeholder="トウキョウ イチロウ"
-                required />
-              <div class="error-message"></div>
-            </div>
-            <div class="form-group">
-              <label>電話番号<span class="required">必須</span></label>
-              <input
-                type="tel"
-                name="tel"
-                placeholder="03-1234-5678"
-                required />
-              <div class="error-message"></div>
-            </div>
-            <div class="form-group">
-              <label>メールアドレス<span class="required">必須</span></label>
-              <input
-                type="email"
-                name="email"
-                placeholder="infodirect@dummy.com"
-                required />
-              <div class="error-message"></div>
-            </div>
-            <div class="form-group">
-              <label>都道府県</label>
-              <input type="text" name="pref" placeholder="東京都" />
-            </div>
-            <div class="form-group">
-              <label>ご質問・ご相談内容</label>
-              <textarea
-                name="message"
-                rows="5"
-                cols="33"
-                placeholder="ご質問・ご相談などがあればご記入ください。"></textarea>
-            </div>
-            <div class="form-group form-group-privacy">
-              <label class="checkbox">
-                <input type="checkbox" name="privacy" value="同意" />
-                <span class="checkmark"></span>
-                <a
-                  href="https://infodirect.co.jp/privacy-policy/"
-                  target="_blank"
-                  >プライバシーポリシー</a
-                >に同意する
-              </label>
-              <div class="error-message-privacy-document"></div>
-            </div>
-            <div class="form-group hp-field" aria-hidden="true">
-              <label for="document-hp-url">URL</label>
-              <input
-                type="text"
-                name="hp-url"
-                id="document-hp-url"
-                tabindex="-1"
-                autocomplete="off" />
-            </div>
-            <button type="button" class="submit-btn" id="documentConfirmBtn">
-              確認画面へ
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-
     <footer>
       <div class="container">
         <div class="inner">
@@ -699,26 +545,6 @@
     const hp = form.querySelector('.hp-field input');
     return hp && hp.value.trim() !== '';
   }
-  
-  // A. 資料請求フォームの処理
-  const docBtn = document.getElementById('documentConfirmBtn');
-  if (docBtn) {
-    docBtn.addEventListener('click', function() {
-      const form = document.getElementById('documentForm');
-      if (isHoneypotFilled(form)) return;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-
-      const privacyCheck = form.querySelector('input[name="privacy"]');
-      if (privacyCheck && !privacyCheck.checked) {
-        const errorPrivacy = form.querySelector('.error-message-privacy-document');
-        if (errorPrivacy) errorPrivacy.textContent = 'プライバシーポリシーへの同意が必要です。';
-        return;
-      }
-
-      saveFormToSession(form);
-      window.location.href = 'document_confirm.html'; // ★資料請求用確認画面へ
-    });
-  }
 
   // B. お問い合わせフォームの処理
   const contactBtn = document.getElementById('contactConfirmBtn');
@@ -727,12 +553,6 @@
       const form = document.getElementById('contactForm');
       if (isHoneypotFilled(form)) return;
       if (!form.checkValidity()) { form.reportValidity(); return; }
-
-      const choiceService = form.querySelectorAll('input[name="choice-service[]"]:checked');
-      if (choiceService.length === 0) {
-        alert('お問い合わせ・ご相談の種類を1つ以上選択してください。');
-        return;
-      }
 
       const privacyCheck = form.querySelector('input[name="privacy"]');
       if (privacyCheck && !privacyCheck.checked) {
