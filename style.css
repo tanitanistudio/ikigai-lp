@@ -171,6 +171,7 @@ a {
 }
 
 .campaign-1 .container .inner {
+    width: 100%;
     background: #fff;
     padding: 20px 0;
     display: flex;
@@ -194,7 +195,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 97%;
     min-height: 66px;
     margin: 0 auto;
     padding: 0.55em 1.15em;
@@ -225,7 +226,15 @@ a {
     .campaign-2 .container .inner .cta-button .btn {
         min-height: 98px;
         border-radius: 16px;
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 580px) {
+    .campaign-1 .container .inner .btn,
+    .campaign-2 .container .inner .cta-button .btn {
         font-size: 30px;
+        width: 90%;
     }
 }
 
